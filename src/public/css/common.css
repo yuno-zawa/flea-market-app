@@ -11,9 +11,53 @@ header {
 
 .header-inner {
     display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 
 .logo img {
     height: 35px;
+}
+
+.header-nav {
+    display: flex;
+    gap: 10px;
+}
+
+.logout-btn, .mypage-btn {
+    width: auto;
+    padding: 8px 16px;
+    margin: 0;
+    font-size: 18px;
+    background: none;
+    border: none;
+    color: white;
+    font-weight: bold;
+}
+
+.sell-btn {
+    width: auto;
+    padding: 8px 16px;
+    margin: 0;
+    font-size: 18px;
+    background-color: white;
+    border: none;
+    color: #000;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+@media (max-width: 850px) {
+    .logo img {
+        height: 30px;
+    }
+
+    .logout-btn, .mypage-btn, .sell-btn {
+        font-size: 16px;
+        padding: 6px 12px;
+    }
+
+    .header-nav {
+        gap: 8px;
+    }
 }

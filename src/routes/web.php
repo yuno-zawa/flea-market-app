@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ItemController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,5 +17,6 @@ use App\Http\Controllers\ProfileController;
 |
 */
 Route::post('/register', [RegisterController::class, 'store']);
-Route::get('/', [AuthController::class, 'index']);
+Route::get('/', [ItemController::class, 'index']);
 Route::get('/mypage/profile', [ProfileController::class, 'edit'])->middleware('auth');
+Route::post('/login', [LoginController::class, 'store']);

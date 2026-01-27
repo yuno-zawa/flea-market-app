@@ -1,4 +1,4 @@
-.register-container {
+.register-container ,.login-container {
     max-width: 700px;
     margin: 50px auto;
     padding: 40px;
@@ -6,13 +6,13 @@
 }
 
 @media (max-width: 850px) {
-    .register-container {
+    .register-container, .login-container {
         max-width: 600px;
         padding: 30px;
     }
 }
 
-.register-container h1 {
+.register-container h1,.login-container h1 {
     margin-bottom: 30px;
     font-size: 30px;
 }
@@ -54,16 +54,16 @@ button:hover {
     background-color: #ee5a6f;
 }
 
-.register-container p {
+.register-container p,.login-container p {
     margin-top: 30px;
 }
 
-.register-container a {
+.register-container a,.login-container a {
     color: #0066cc;
     text-decoration: none;
 }
 
-.register-container a:hover {
+.register-container a:hover,.login-container a:hover {
     text-decoration: underline;
 }
 
