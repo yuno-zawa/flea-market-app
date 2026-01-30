@@ -10,4 +10,10 @@ class ProfileController extends Controller
     {
         return view('profile.edit');
     }
+
+    public function update(Request $request)
+    {
+        // 後で実装
+        return redirect('/mypage/profile')->with('success', '更新しました');
+    }
 }

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/common.css') }}">
     @yield('css')
 </head>
+
 <body>
     <header>
         <div class="header-inner">
@@ -32,5 +33,31 @@
         </div>
     </header>
     @yield('content')
+
+<script>
+function previewImage(event) {
+    const file = event.target.files[0];
+    const preview = document.getElementById('preview');
+
+    if (file && preview) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            // divの場合はimgに置き換える
+            if (preview.tagName === 'DIV') {
+                const img = document.createElement('img');
+                img.id = 'preview';
+                img.alt = 'プロフィール画像';
+                img.src = e.target.result;
+                preview.parentNode.replaceChild(img, preview);
+            } else {
+                // すでにimgの場合は画像を更新
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            }
+        }
+        reader.readAsDataURL(file);
+    }
+}
+</script>
 </body>
 </html>

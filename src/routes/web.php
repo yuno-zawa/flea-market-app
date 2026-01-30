@@ -19,4 +19,5 @@ use App\Http\Controllers\LoginController;
 Route::post('/register', [RegisterController::class, 'store']);
 Route::get('/', [ItemController::class, 'index']);
 Route::get('/mypage/profile', [ProfileController::class, 'edit'])->middleware('auth');
+Route::patch('/mypage/profile', [ProfileController::class, 'update'])->middleware('auth')->name('profile.update');
 Route::post('/login', [LoginController::class, 'store']);
