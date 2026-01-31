@@ -12,6 +12,9 @@ class ItemController extends Controller
         if (!Auth::check()) {
             return redirect('/register');
         }
-        return view('index');
+        // 商品データの取得（後に実装）
+        $products = [];
+
+        return view('index', compact('products'));
     }
 }
