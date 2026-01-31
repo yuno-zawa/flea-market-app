@@ -15,6 +15,13 @@
             <div class="logo">
                 <img src="{{ asset('images/header-logo.png') }}" alt="COACHTECHロゴ">
             </div>
+
+            <div class="search-box">
+                <form action="/" method="GET">
+                    <input type="text" name="keyword" placeholder="なにをお探しですか？" value="{{ request('keyword') }}">
+                </form>
+            </div>
+
             @auth
             <nav class="header-nav">
                 <form action="/logout" method="POST">

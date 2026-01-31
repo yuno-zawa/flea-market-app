@@ -1,0 +1,85 @@
+.products-container {
+    max-width: 100%;
+    margin: 50px auto;
+    padding: 20px 60px;
+}
+
+/* タブ */
+.tabs {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+    justify-content: flex-start;
+    border-bottom: 2px solid #000;
+}
+
+.tab {
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* おすすめタブ */
+.tab:first-child {
+    color: #000;
+}
+
+/* おすすめタブが選択中 */
+.tab:first-child.active {
+    border-bottom: 2px solid #000;
+}
+
+/* マイリストタブ */
+.tab:last-child {
+    color: #ff4757;
+}
+
+/* マイリストタブが選択中 */
+.tab:last-child.active {
+    border-bottom: 2px solid #ff4757;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 50px;
+}
+
+.product-card {
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.product-card img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.product-info {
+    padding: 10px;
+    text-align: left; /* 左寄せ */
+}
+
+.product-card h2 {
+    font-size: 20px;
+    margin: 0;
+}
+
+.product-card p {
+    font-size: 16px;
+    color: #555;
+    margin: 0;
+}
+
+/* タブレット対応 */
+@media (max-width: 850px) {
+    .products-container {
+        padding: 30px;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

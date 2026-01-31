@@ -13,6 +13,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 20px;
 }
 
 .logo img {
@@ -59,5 +60,35 @@ header {
 
     .header-nav {
         gap: 8px;
+    }
+}
+
+/* 検索ボックス */
+.search-box {
+    flex: 1;
+    max-width: 500px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.search-box input::placeholder {
+    color: #7b7b7b;
+}
+
+/* タブレット対応 */
+@media (max-width: 850px) {
+    .search-box {
+        max-width: 300px;
+    }
+
+    .search-box input {
+        font-size: 14px;
+        padding: 8px 12px;
     }
 }

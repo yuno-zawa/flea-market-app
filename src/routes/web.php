@@ -21,3 +21,4 @@ Route::get('/', [ItemController::class, 'index']);
 Route::get('/mypage/profile', [ProfileController::class, 'edit'])->middleware('auth');
 Route::patch('/mypage/profile', [ProfileController::class, 'update'])->middleware('auth')->name('profile.update');
 Route::post('/login', [LoginController::class, 'store']);
+Route::get('/', [ItemController::class, 'index'])->name('products.index');

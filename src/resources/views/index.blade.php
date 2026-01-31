@@ -8,23 +8,24 @@
 
 @section('content')
 <div class="products-container">
-    <h1>商品一覧</h1>
+    <div class="tabs">
+        <a href="/" class="tab {{ request('tab') != 'mylist' ? 'active' : '' }}">おすすめ</a>
+        <a href="/?tab=mylist" class="tab {{ request('tab') == 'mylist' ? 'active' : '' }}">マイリスト</a>
+    </div>
+
     <div class="products-grid">
         @forelse($products as $product)
             <div class="product-card">
-                <a href="{{ route('products.show', $product->id) }}">
-                    <div class="product-image">
-                        @if($product->images->first())
-                            <img src="{{ asset('storage/' . $product->images->first()->path) }}" alt="{{ $product->name }}">
-                        @else
-                            <img src="{{ asset('images/no-image.png') }}" alt="No Image">
-                        @endif
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-name">{{ $product->name }}</h2>
-                        <p class="product-price">¥{{ number_format($product->price) }}</p>
-                    </div>
-                </a>
+                <div class="product-image">
+                    @if($product->images->first())
+                        <img src="{{ $product->images->first()->path }}" alt="{{ $product->name }}">
+                    @else
+                        <img src="{{ asset('images/no-image.png') }}" alt="No Image">
+                    @endif
+                </div>
+                <div class="product-info">
+                    <h2 class="product-name">{{ $product->name }}</h2>
+                </div>
             </div>
         @empty
             <p>商品がありません</p>
