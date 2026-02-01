@@ -9,19 +9,27 @@ use App\Models\Item;
 class ItemController extends Controller
 {
     public function index(Request $request)
+    {
+        if ($request->query('tab') == 'mylist') {
+            // マイリスト（後で実装）
+            $products = [];
+        } else {
+            // おすすめタブ：全商品を取得
+            $products = Item::with(['images', 'purchase'])
+                ->when(Auth::check(), function ($query) {
+                    // ログイン中は自分が出品した商品を除外（要件4）
+                    return $query->where('user_id', '!=', Auth::id());
+                })
+                ->get();
+        }
+
+        return view('index', compact('products'));
+    }
+
+    public function show($id)
 {
-    if (!Auth::check() && $request->query('tab') != 'mylist') {
-        // 未認証でおすすめタブの場合のみ表示可能
-    }
+    $item = Item::with(['images', 'user', 'purchase'])->findOrFail($id);
 
-    if ($request->query('tab') == 'mylist') {
-        // マイリストの商品取得（後で実装）
-        $products = [];
-    } else {
-        // 全商品取得
-        $products = Item::with('images')->get();
-    }
-
-    return view('index', compact('products'));
+    return view('item.show', compact('item'));
 }
 }

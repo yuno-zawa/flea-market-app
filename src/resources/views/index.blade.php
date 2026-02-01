@@ -16,16 +16,23 @@
     <div class="products-grid">
         @forelse($products as $product)
             <div class="product-card">
-                <div class="product-image">
-                    @if($product->images->first())
-                        <img src="{{ $product->images->first()->path }}" alt="{{ $product->name }}">
-                    @else
-                        <img src="{{ asset('images/no-image.png') }}" alt="No Image">
-                    @endif
-                </div>
-                <div class="product-info">
-                    <h2 class="product-name">{{ $product->name }}</h2>
-                </div>
+                <a href="{{ route('item.show', $product->id) }}">
+                    <div class="product-image">
+                        @if($product->images->first())
+                            <img src="{{ $product->images->first()->path }}" alt="{{ $product->name }}">
+                        @else
+                            <img src="{{ asset('images/no-image.png') }}" alt="No Image">
+                        @endif
+
+                        {{-- 購入済みならSoldラベル表示（要件3） --}}
+                        @if($product->isSold())
+                            <span class="sold-label">Sold</span>
+                        @endif
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-name">{{ $product->name }}</h2>
+                    </div>
+                </a>
             </div>
         @empty
             <p>商品がありません</p>

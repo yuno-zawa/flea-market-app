@@ -29,4 +29,16 @@ class Item extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    // リレーション：商品は1つの購入情報を持つ
+    public function purchase()
+    {
+        return $this->hasOne(Purchase::class);
+    }
+
+    // 購入済みかどうか判定
+    public function isSold()
+    {
+        return $this->purchase !== null;
+    }
 }

@@ -16,11 +16,13 @@
                 <img src="{{ asset('images/header-logo.png') }}" alt="COACHTECHロゴ">
             </div>
 
+            @unless(request()->routeIs('login') || request()->routeIs('register'))
             <div class="search-box">
                 <form action="/" method="GET">
                     <input type="text" name="keyword" placeholder="なにをお探しですか？" value="{{ request('keyword') }}">
                 </form>
             </div>
+            @endunless
 
             @auth
             <nav class="header-nav">
@@ -29,12 +31,11 @@
                     <button type="submit" class="logout-btn">ログアウト</button>
                 </form>
                 <form action="/mypage" method="GET">
-                    @csrf
                     <button type="submit" class="mypage-btn">マイページ</button>
                 </form>
                 <form action="/sell" method="GET">
-                    @csrf
                     <button type="submit" class="sell-btn">出品</button>
+                </form>
             </nav>
             @endauth
         </div>
@@ -49,7 +50,6 @@ function previewImage(event) {
     if (file && preview) {
         const reader = new FileReader();
         reader.onload = function(e) {
-            // divの場合はimgに置き換える
             if (preview.tagName === 'DIV') {
                 const img = document.createElement('img');
                 img.id = 'preview';
@@ -57,7 +57,6 @@ function previewImage(event) {
                 img.src = e.target.result;
                 preview.parentNode.replaceChild(img, preview);
             } else {
-                // すでにimgの場合は画像を更新
                 preview.src = e.target.result;
                 preview.style.display = 'block';
             }
