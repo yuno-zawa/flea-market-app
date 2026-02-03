@@ -74,7 +74,6 @@
     text-decoration: none;
 }
 
-
 /* タブレット対応 */
 @media (max-width: 850px) {
     .products-container {
@@ -106,4 +105,3 @@
     font-weight: bold;
     border-radius: 4px;
 }
-

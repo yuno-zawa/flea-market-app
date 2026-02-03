@@ -11,6 +11,10 @@ class ItemController extends Controller
     public function index(Request $request)
     {
         if ($request->query('tab') == 'mylist') {
+            if (!Auth::check()) {
+                // 未ログイン時はマイリストタブにアクセスできないようリダイレクト
+                return redirect('/login');
+            }
             // マイリスト（後で実装）
             $products = [];
         } else {
