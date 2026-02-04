@@ -41,4 +41,34 @@ class Item extends Model
     {
         return $this->purchase !== null;
     }
+
+    // カテゴリのリレーション
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'item_category');
+    }
+
+// コメントのリレーション
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+// いいねのリレーション
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
+
+// いいね数を取得
+    public function likesCount()
+    {
+        return $this->likes()->count();
+    }
+
+// ログインユーザーがいいねしているか
+    public function isLikedBy($userId)
+    {
+        return $this->likes()->where('user_id', $userId)->exists();
+    }
 }
