@@ -24,18 +24,22 @@
             </div>
             @endunless
 
-            @auth
             <nav class="header-nav">
-                <form action="/logout" method="POST">
-                    @csrf
-                    <button type="submit" class="logout-btn">ログアウト</button>
-                </form>
-                <form action="/mypage" method="GET">
-                    <button type="submit" class="mypage-btn">マイページ</button>
-                </form>
-                <form action="/sell" method="GET">
-                    <button type="submit" class="sell-btn">出品</button>
-                </form>
+                @auth
+                    <form action="/logout" method="POST">
+                        @csrf
+                        <button type="submit" class="logout-btn">ログアウト</button>
+                    </form>
+                    <form action="/mypage" method="GET">
+                        <button type="submit" class="mypage-btn">マイページ</button>
+                    </form>
+                    <form action="/sell" method="GET">
+                        <button type="submit" class="sell-btn">出品</button>
+                    </form>
+                @else
+                <!-- 未ログイン -->
+                    <a href="/login" class="login-btn">ログイン</a>
+                    <a href="/register" class="register-btn">会員登録</a>
             </nav>
             @endauth
         </div>

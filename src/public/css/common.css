@@ -25,7 +25,7 @@ header {
     gap: 10px;
 }
 
-.logout-btn, .mypage-btn {
+.logout-btn, .mypage-btn, .login-btn, .register-btn {
     width: auto;
     padding: 8px 16px;
     margin: 0;
@@ -34,6 +34,7 @@ header {
     border: none;
     color: white;
     font-weight: bold;
+    text-decoration: none;
 }
 
 .sell-btn {
@@ -46,21 +47,6 @@ header {
     color: #000;
     font-weight: bold;
     border-radius: 4px;
-}
-
-@media (max-width: 850px) {
-    .logo img {
-        height: 30px;
-    }
-
-    .logout-btn, .mypage-btn, .sell-btn {
-        font-size: 16px;
-        padding: 6px 12px;
-    }
-
-    .header-nav {
-        gap: 8px;
-    }
 }
 
 /* 検索ボックス */
@@ -90,5 +76,18 @@ header {
     .search-box input {
         font-size: 14px;
         padding: 8px 12px;
+    }
+
+    .logo img {
+        height: 20px;
+    }
+
+    .logout-btn, .mypage-btn, .sell-btn {
+        font-size: 16px;
+        padding: 6px 12px;
+    }
+
+    .header-nav {
+        gap: 8px;
     }
 }

@@ -5,6 +5,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LikeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +24,5 @@ Route::patch('/mypage/profile', [ProfileController::class, 'update'])->middlewar
 Route::post('/login', [LoginController::class, 'store']);
 Route::get('/', [ItemController::class, 'index'])->name('products.index');
 Route::get('/item/{id}', [ItemController::class, 'show'])->name('item.show');
+// いいね機能（認証必須）
+Route::post('/item/{id}/like', [LikeController::class, 'toggle'])->middleware('auth')->name('like.toggle');
