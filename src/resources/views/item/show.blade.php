@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('title', $item->name)
+@section('title', '商品詳細')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/item.css') }}">
+<link rel="stylesheet" href="{{ asset('css/show.css') }}">
 @endsection
 
 @section('content')
@@ -143,7 +143,7 @@
                     <form action="#" method="POST" class="comment-form" onsubmit="alert('コメント機能は準備中です'); return false;">
                         @csrf
                         <label for="content">商品へのコメント</label>
-                        <textarea id="content" name="content" placeholder="コメントを入力" required maxlength="255">{{ old('content') }}</textarea>
+                        <textarea id="content" name="content"  required maxlength="255">{{ old('content') }}</textarea>
                         @error('content')
                             <p class="error">{{ $message }}</p>
                         @enderror
