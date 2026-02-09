@@ -69,5 +69,7 @@ function previewImage(event) {
     }
 }
 </script>
+
+@yield('scripts')
 </body>
 </html>
