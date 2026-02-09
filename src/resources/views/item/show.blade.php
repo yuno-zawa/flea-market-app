@@ -140,7 +140,7 @@
 
                 <!-- コメント投稿フォーム -->
                 @auth
-                    <form action="#" method="POST" class="comment-form" onsubmit="alert('コメント機能は準備中です'); return false;">
+                    <form action="{{ route('comment.store', ['item_id' => $item->id]) }}" method="POST" class="comment-form">
                         @csrf
                         <label for="content">商品へのコメント</label>
                         <textarea id="content" name="content"  required maxlength="255">{{ old('content') }}</textarea>

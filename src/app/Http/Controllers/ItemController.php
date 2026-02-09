@@ -15,8 +15,12 @@ class ItemController extends Controller
                 // 未ログイン時はマイリストタブにアクセスできないようリダイレクト
                 return redirect('/login');
             }
-            // マイリスト（後で実装）
-            $products = [];
+            // マイリスト
+            $products = Item::with(['images', 'purchase'])
+                ->whereHas('likes', function ($query) {
+                    $query->where('user_id', Auth::id());
+                })
+                ->get();
         } else {
             // おすすめタブ：全商品を取得
             $products = Item::with(['images', 'purchase'])
@@ -32,7 +36,7 @@ class ItemController extends Controller
 
     public function show($id)
 {
-    $item = Item::with(['images', 'user', 'purchase'])->findOrFail($id);
+    $item = Item::with(['images', 'user', 'purchase', 'comments.user'])->findOrFail($id);
 
     return view('item.show', compact('item'));
 }
