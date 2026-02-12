@@ -5,13 +5,6 @@
     text-align: center;
 }
 
-@media (max-width: 850px) {
-    .register-container, .login-container {
-        max-width: 600px;
-        padding: 30px;
-    }
-}
-
 .register-container h1,.login-container h1 {
     margin-bottom: 30px;
     font-size: 30px;

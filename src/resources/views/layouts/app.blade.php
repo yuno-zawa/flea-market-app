@@ -39,7 +39,8 @@
                 @else
                 <!-- 未ログイン -->
                     <a href="/login" class="login-btn">ログイン</a>
-                    <a href="/register" class="register-btn">会員登録</a>
+                    <a href="/login" class="mypage-btn">マイページ</a>
+                    <a href="/login" class="sell-btn">出品</a>
             </nav>
             @endauth
         </div>

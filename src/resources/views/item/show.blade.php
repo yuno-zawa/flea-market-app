@@ -150,7 +150,11 @@
                         <button type="submit">コメントを送信する</button>
                     </form>
                 @else
-                    <p class="login-message">コメントするには<a href="/login">ログイン</a>してください</p>
+                    <form class="comment-form">
+                            <label for="content">商品へのコメント</label>
+                            <textarea id="content" name="content" placeholder="コメントを入力" maxlength="255"></textarea>
+                            <a href="/login" class="comment-submit-btn">コメントを送信する</a>
+    </form>
                 @endauth
             </div>
         </div>

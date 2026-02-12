@@ -74,21 +74,6 @@
     text-decoration: none;
 }
 
-/* タブレット対応 */
-@media (max-width: 850px) {
-    .products-container {
-        padding: 30px;
-    }
-
-    .products-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .product-card img {
-        height: 200px; /* タブレットでは少し小さく */
-    }
-}
-
 .product-image {
     position: relative;
 }

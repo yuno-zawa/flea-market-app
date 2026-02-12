@@ -25,7 +25,7 @@ header {
     gap: 10px;
 }
 
-.logout-btn, .mypage-btn, .login-btn, .register-btn {
+.logout-btn, .mypage-btn, .login-btn {
     width: auto;
     padding: 8px 16px;
     margin: 0;
@@ -65,29 +65,4 @@ header {
 
 .search-box input::placeholder {
     color: #7b7b7b;
-}
-
-/* タブレット対応 */
-@media (max-width: 850px) {
-    .search-box {
-        max-width: 300px;
-    }
-
-    .search-box input {
-        font-size: 14px;
-        padding: 8px 12px;
-    }
-
-    .logo img {
-        height: 20px;
-    }
-
-    .logout-btn, .mypage-btn, .sell-btn {
-        font-size: 16px;
-        padding: 6px 12px;
-    }
-
-    .header-nav {
-        gap: 8px;
-    }
 }

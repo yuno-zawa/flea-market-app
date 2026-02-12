@@ -167,24 +167,3 @@
 .purchase-submit-btn:hover {
     background-color: #ee5a6f;
 }
-
-/* レスポンシブ */
-@media (max-width: 850px) {
-    .purchase-layout {
-        flex-direction: column;
-    }
-
-    .purchase-right {
-        flex: 1;
-        width: 100%;
-        position: static;
-    }
-
-    .purchase-item {
-        flex-direction: column;
-    }
-
-    .item-image {
-        flex: 0 0 auto;
-    }
-}
