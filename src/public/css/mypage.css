@@ -1,0 +1,129 @@
+.mypage-container {
+    max-width: 1400px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+/* プロフィール情報 */
+.profile-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.profile-image img,
+.avatar-placeholder {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.avatar-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #007bff;
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.profile-name {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.profile-edit-btn {
+    padding: 10px 20px;
+    border: 2px solid #ff4757;
+    border-radius: 7px;
+    text-decoration: none;
+    color: #ff4757;
+    font-weight: bold;
+}
+
+.profile-edit-btn:hover {
+    background-color: #ff4757;
+    color: white;
+}
+
+/* タブ */
+.mypage-tabs {
+    display: flex;
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 30px;
+}
+
+.tab {
+    padding: 15px 30px;
+    text-decoration: none;
+    color: #666;
+    font-size: 16px;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.3s;
+}
+
+.tab.active {
+    color: #ff4757;
+    font-weight: bold;
+    
+}
+
+
+/* 商品一覧 */
+.mypage-items {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.item-card {
+    text-decoration: none;
+    color: inherit;
+}
+
+.item-card .item-image {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    margin-bottom: 10px;
+}
+
+.item-card .item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.sold-badge {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.item-name {
+    font-size: 14px;
+    color: #333;
+}
+
+.no-items {
+    color: #999;
+    text-align: center;
+    padding: 40px 0;
+    grid-column: 1 / -1;
+}

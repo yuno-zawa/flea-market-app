@@ -8,6 +8,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\MypageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,4 +32,7 @@ Route::post('/item/{id}/like', [LikeController::class, 'toggle'])->middleware('a
 Route::post('/item/{item_id}/comment', [CommentController::class, 'store'])->middleware('auth')->name('comment.store');
 Route::middleware('auth')->group(function () {
     Route::get('/purchase/{item_id}', [PurchaseController::class, 'show'])->name('purchase.show');
+});
+Route::middleware('auth')->group(function () {
+    Route::get('/mypage', [MypageController::class, 'index'])->name('mypage.index');
 });
