@@ -21,23 +21,19 @@
 }
 
 /* おすすめタブ */
-.tab:first-child {
+.tab:first-child, .tab:last-child {
     color: #000;
 }
 
 /* おすすめタブが選択中 */
 .tab:first-child.active {
-    border-bottom: 2px solid #000;
-}
-
-/* マイリストタブ */
-.tab:last-child {
     color: #ff4757;
 }
 
+
 /* マイリストタブが選択中 */
 .tab:last-child.active {
-    border-bottom: 2px solid #ff4757;
+    color: #ff4757;
 }
 
 .products-grid {

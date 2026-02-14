@@ -1,13 +1,14 @@
 .mypage-container {
-    max-width: 1400px;
-    margin: 40px auto;
-    padding: 20px;
+    margin: 30px 50px;
+    padding: 40px;
 }
 
 /* プロフィール情報 */
 .profile-section {
     display: flex;
     justify-content: space-between;
+    margin: auto;
+    max-width: 900px;
     align-items: center;
     margin-bottom: 40px;
 }
@@ -30,7 +31,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #007bff;
+    background-color: #ccc;
     color: white;
     font-size: 32px;
     font-weight: bold;
@@ -60,13 +61,15 @@
     display: flex;
     border-bottom: 2px solid #ddd;
     margin-bottom: 30px;
+    gap: 30px;
 }
 
 .tab {
-    padding: 15px 30px;
+    padding: 15px 10px;
     text-decoration: none;
     color: #666;
-    font-size: 16px;
+    font-size: 20px;
+    font-weight: bold;
     border-bottom: 2px solid transparent;
     margin-bottom: -2px;
     transition: all 0.3s;
@@ -74,8 +77,6 @@
 
 .tab.active {
     color: #ff4757;
-    font-weight: bold;
-    
 }
 
 
