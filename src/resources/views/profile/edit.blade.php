@@ -13,7 +13,7 @@
     <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
         @csrf
         @method('PATCH')
-
+        <input type="hidden" name="from" value="{{ str_starts_with(url()->previous(), route('mypage.index')) ? 'mypage' : 'other' }}">
         <div class="form-group image-upload">
             <div class="image-preview">
                 @if(Auth::user()->profile_image)

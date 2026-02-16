@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\ProfileRequest;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -11,9 +12,27 @@ class ProfileController extends Controller
         return view('profile.edit');
     }
 
-    public function update(Request $request)
+    public function update(ProfileRequest $request)
     {
-        // 後で実装
-        return redirect('/mypage/profile')->with('success', '更新しました');
+        /** @var \App\Models\User $user */
+        $user = Auth::user();
+
+        $user->name = $request->name;
+        $user->postal_code = $request->postal_code;
+        $user->address = $request->address;
+        $user->building = $request->building;
+
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('profile_images', 'public');
+            $user->profile_image = $path;
+        }
+
+        $user->save();
+
+        if ($request->from === 'mypage') {
+            return redirect()->route('mypage.index')->with('success', 'プロフィールを更新しました');
+        }
+
+        return redirect('/')->with('success', 'プロフィールを更新しました');
     }
 }
