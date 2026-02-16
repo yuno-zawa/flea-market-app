@@ -11,9 +11,58 @@ header {
 
 .header-inner {
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    gap: 20px;
 }
 
 .logo img {
-    height: 40px;
+    height: 35px;
+}
+
+.header-nav {
+    display: flex;
+    gap: 10px;
+}
+
+.logout-btn, .mypage-btn, .login-btn {
+    width: auto;
+    padding: 8px 16px;
+    margin: 0;
+    font-size: 18px;
+    background: none;
+    border: none;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.sell-btn {
+    width: auto;
+    padding: 8px 16px;
+    margin: 0;
+    font-size: 18px;
+    background-color: white;
+    border: none;
+    color: #000;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+/* 検索ボックス */
+.search-box {
+    flex: 1;
+    max-width: 500px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.search-box input::placeholder {
+    color: #7b7b7b;
 }

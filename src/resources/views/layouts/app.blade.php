@@ -3,17 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>@yield('title', 'COACHTECH')</title>
+    <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/common.css') }}">
     @yield('css')
 </head>
+
 <body>
     <header>
         <div class="header-inner">
             <div class="logo">
                 <img src="{{ asset('images/header-logo.png') }}" alt="COACHTECHロゴ">
             </div>
+
+            @unless(request()->routeIs('login') || request()->routeIs('register'))
+            <div class="search-box">
+                <form action="/" method="GET">
+                    <input type="text" name="keyword" placeholder="なにをお探しですか？" value="{{ request('keyword') }}">
+                </form>
+            </div>
+            @endunless
+
+            <nav class="header-nav">
+                @auth
+                    <form action="/logout" method="POST">
+                        @csrf
+                        <button type="submit" class="logout-btn">ログアウト</button>
+                    </form>
+                    <form action="/mypage" method="GET">
+                        <button type="submit" class="mypage-btn">マイページ</button>
+                    </form>
+                    <form action="/sell" method="GET">
+                        <button type="submit" class="sell-btn">出品</button>
+                    </form>
+                @else
+                <!-- 未ログイン -->
+                    <a href="/login" class="login-btn">ログイン</a>
+                    <a href="/login" class="mypage-btn">マイページ</a>
+                    <a href="/login" class="sell-btn">出品</a>
+            </nav>
+            @endauth
         </div>
     </header>
     @yield('content')
+
+<script>
+function previewImage(event) {
+    const file = event.target.files[0];
+    const preview = document.getElementById('preview');
+
+    if (file && preview) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            if (preview.tagName === 'DIV') {
+                const img = document.createElement('img');
+                img.id = 'preview';
+                img.alt = 'プロフィール画像';
+                img.src = e.target.result;
+                preview.parentNode.replaceChild(img, preview);
+            } else {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            }
+        }
+        reader.readAsDataURL(file);
+    }
+}
+</script>
+
+@yield('scripts')
 </body>
 </html>

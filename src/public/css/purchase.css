@@ -1,0 +1,169 @@
+.purchase-container {
+    max-width: 1600px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+/* 左右2カラムレイアウト */
+.purchase-layout {
+    display: flex;
+    gap: 100px;
+    align-items: flex-start;
+}
+
+/* 左側 */
+.purchase-left {
+    flex: 1;
+}
+
+/* 右側 */
+.purchase-right {
+    flex: 0 0 500px;
+}
+
+/* 商品情報 */
+.purchase-item {
+    display: flex;
+    gap: 60px;
+    margin-bottom: 50px;
+    padding-bottom: 50px;
+    border-bottom: 2px solid #595959;
+}
+
+.item-image {
+    flex: 0 0 200px;
+}
+
+.item-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.item-info {
+    flex: 1;
+}
+
+.item-name {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.item-price {
+    font-size: 30px;
+}
+
+/* 各セクション */
+.purchase-section {
+    margin-bottom: 50px;
+    padding-bottom: 50px;
+    border-bottom: 2px solid #595959;
+}
+
+.section-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 35px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 支払い方法 */
+.payment-select {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #595959;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+}
+
+/* 配送先 */
+.change-address-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    color: #007bff;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-bottom: 0;
+    font-size: 20px;
+}
+
+.change-address-btn:hover {
+    color: #0056b3;
+}
+
+.address-info {
+    background-color: white;
+    padding: 15px;
+    border-radius: 4px;
+}
+
+.address-info p {
+    margin-bottom: 5px;
+}
+
+.no-address {
+    color: #999;
+}
+
+/* 小計・購入ボタン */
+.purchase-summary {
+    background-color: white;
+    padding: 20px;
+}
+
+.summary-table {
+    width: 100%;
+    margin-bottom: 30px;
+    border: 1px solid #595959 ;
+}
+
+.summary-table tr {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #595959 ;
+}
+
+.summary-table tr:last-child {
+    border-bottom: none;
+}
+
+.summary-table th,
+.summary-table td {
+    padding: 25px 20px;
+    text-align: left;
+}
+
+.summary-table th {
+    font-size: 20px;
+}
+
+.summary-table td {
+    text-align: right;
+    font-size: 20px;
+}
+
+.purchase-submit-btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 40px;
+    background-color: #ff4757;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.purchase-submit-btn:hover {
+    background-color: #ee5a6f;
+}
