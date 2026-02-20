@@ -12,9 +12,9 @@
 <body>
     <header>
         <div class="header-inner">
-            <div class="logo">
+            <a href="{{ route('products.index') }}" class="logo">
                 <img src="{{ asset('images/header-logo.png') }}" alt="COACHTECHロゴ">
-            </div>
+            </a>
 
             @unless(request()->routeIs('login') || request()->routeIs('register'))
             <div class="search-box">

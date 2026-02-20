@@ -9,7 +9,9 @@ class ProfileController extends Controller
 {
     public function edit()
     {
-        return view('profile.edit');
+        $user = \App\Models\User::find(Auth::id());
+
+        return view('profile.edit', compact('user'));
     }
 
     public function update(ProfileRequest $request)
@@ -28,6 +30,8 @@ class ProfileController extends Controller
         }
 
         $user->save();
+
+        Auth::setUser($user);
 
         if ($request->from === 'mypage') {
             return redirect()->route('mypage.index')->with('success', 'プロフィールを更新しました');
