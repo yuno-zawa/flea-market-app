@@ -12,8 +12,8 @@ class ItemController extends Controller
     {
         if ($request->query('tab') == 'mylist') {
             if (!Auth::check()) {
-                // 未ログイン時はマイリストタブにアクセスできないようリダイレクト
-                return redirect('/login');
+                session()->put('url.intended', $request->fullUrl());
+                return redirect()->route('login');
             }
             // マイリスト
             $products = Item::with(['images', 'purchase'])

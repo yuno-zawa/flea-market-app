@@ -61,11 +61,7 @@
                 @if($item->isSold())
                     <p class="sold-message">売り切れ</p>
                 @else
-                    @auth
-                        <a href="{{ route('purchase.show', $item->id) }}" class="purchase-btn">購入手続きへ</a>
-                    @else
-                        <a href="/login" class="purchase-btn">購入手続きへ</a>
-                    @endauth
+                    <a href="{{ route('purchase.show', $item->id) }}" class="purchase-btn">購入手続きへ</a>
                 @endif
             </div>
 
