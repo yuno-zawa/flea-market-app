@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Item;
+use App\Models\Category;
+use App\Http\Requests\ExhibitionRequest;
 
 class ItemController extends Controller
 {
@@ -35,9 +37,40 @@ class ItemController extends Controller
     }
 
     public function show($id)
-{
-    $item = Item::with(['images', 'user', 'purchase', 'comments.user'])->findOrFail($id);
+    {
+        $item = Item::with(['images', 'user', 'purchase', 'comments.user'])->findOrFail($id);
 
-    return view('item.show', compact('item'));
-}
+        return view('item.show', compact('item'));
+    }
+
+    public function create()
+    {
+        $categories = Category::all();
+        return view('item.create', compact('categories'));
+    }
+
+    // 商品を出品
+    public function store(ExhibitionRequest $request)
+    {
+        // 商品情報を保存
+        $item = new Item();
+        $item->user_id = Auth::id();
+        $item->name = $request->name;
+        $item->brand = $request->brand;
+        $item->description = $request->description;
+        $item->price = $request->price;
+        $item->condition = $request->condition;
+        $item->save();
+
+        // 商品画像を保存
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('item_images', 'public');
+            $item->images()->create(['path' => 'storage/' . $path]);
+        }
+
+        // カテゴリーを紐付け
+        $item->categories()->attach($request->categories);
+
+        return redirect()->route('products.index')->with('success', '商品を出品しました');
+    }
 }
