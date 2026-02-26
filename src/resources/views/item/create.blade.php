@@ -3,11 +3,11 @@
 @section('title', '商品の出品')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/auth.css') }}">
+<link rel="stylesheet" href="{{ asset('css/sell.css') }}">
 @endsection
 
 @section('content')
-<div class="login-container">
+<div class="sell-container">
     <h1>商品の出品</h1>
 
     <form method="POST" action="{{ route('item.store') }}" enctype="multipart/form-data">
@@ -16,7 +16,10 @@
         <!-- 商品画像 -->
         <div class="form-group">
             <label for="image">商品画像</label>
-            <input type="file" id="image" name="image" accept="image/*">
+            <div class="image-upload-wrapper">
+                <label for="image" class="image-upload-btn">画像を選択する</label>
+                <input type="file" id="image" name="image" accept="image/*" style="display: none;">
+                
             @error('image')
                 <p class="error">{{ $message }}</p>
             @enderror
