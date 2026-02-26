@@ -1,8 +1,8 @@
 /* 出品画面のコンテナ */
 .sell-container {
     max-width: 700px;
-    margin: 50px auto;
-    padding: 40px;
+    margin: 20px auto;
+    padding: 20px;
     text-align: center;
 }
 
@@ -14,10 +14,11 @@
 .sell-container h2 {
     margin-top: 30px;
     margin-bottom: 15px;
-    font-size: 20px;
+    font-size: 30px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 2px solid #919191;
     padding-bottom: 10px;
+    color: #646464;
 }
 
 /* フォームグループ */
@@ -59,22 +60,29 @@
 
 /* チェックボックスグループ */
 .checkbox-group {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 20px;
 }
 
 .checkbox-label {
-    display: flex;
-    align-items: center;
-    font-weight: normal;
+    display: inline-block;
+    padding: 8px 12px;
+    border: 2px solid #ff4757;
+    color: #ff4757;
+    border-radius: 20px;
     cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+    background-color: white;
 }
 
-.checkbox-label input[type="checkbox"] {
-    margin-right: 5px;
-    cursor: pointer;
+.checkbox-label input[type="checkbox"]:checked + span,
+.checkbox-label:has(input:checked) {
+    background-color: #ff4757;
+    color: white;
+    border-color: #ff4757;
 }
 
 /* 出品ボタン */
@@ -101,3 +109,25 @@ p.error {
     font-size: 14px;
     margin: 5px 0 0 0;
 }
+
+.image-upload-area {
+    border: 2px dotted #656565;
+    border-radius: 8px;
+    padding: 50px ;
+    text-align: center;
+    cursor: pointer;
+}
+
+
+.image-upload-btn {
+    display: inline-block !important;
+    padding: 12px 20px;
+    background-color: white;
+    color: #ff4757;
+    border: 2px solid #ff4757;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+

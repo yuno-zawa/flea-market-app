@@ -16,10 +16,10 @@
         <!-- 商品画像 -->
         <div class="form-group">
             <label for="image">商品画像</label>
-            <div class="image-upload-wrapper">
+            <div class="image-upload-area">
                 <label for="image" class="image-upload-btn">画像を選択する</label>
                 <input type="file" id="image" name="image" accept="image/*" style="display: none;">
-                
+            </div>
             @error('image')
                 <p class="error">{{ $message }}</p>
             @enderror
@@ -39,6 +39,7 @@
                             name="categories[]" 
                             value="{{ $category->id }}"
                             {{ in_array($category->id, old('categories', [])) ? 'checked' : '' }}
+                            style="display: none;"
                         >
                         {{ $category->name }}
                     </label>
