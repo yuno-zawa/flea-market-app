@@ -58,6 +58,10 @@
     box-sizing: border-box;
 }
 
+#price::placeholder{
+    font-weight: bold;
+}
+
 /* チェックボックスグループ */
 .checkbox-group {
     display: flex;
@@ -113,11 +117,10 @@ p.error {
 .image-upload-area {
     border: 2px dotted #656565;
     border-radius: 8px;
-    padding: 50px ;
+    padding: 50px;
     text-align: center;
     cursor: pointer;
 }
-
 
 .image-upload-btn {
     display: inline-block !important;
@@ -129,5 +132,3 @@ p.error {
     cursor: pointer;
     font-weight: bold;
 }
-
-

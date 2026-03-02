@@ -12,7 +12,7 @@
         <!-- 左側：商品画像 -->
         <div class="item-image">
             @if($item->images->first())
-                <img src="{{ $item->images->first()->path }}" alt="{{ $item->name }}">
+                <img src="{{ asset($item->images->first()->path) }}" alt="{{ $item->name }}">
             @else
                 <img src="{{ asset('images/no-image.png') }}" alt="No Image">
             @endif

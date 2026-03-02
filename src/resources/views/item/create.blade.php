@@ -17,8 +17,9 @@
         <div class="form-group">
             <label for="image">商品画像</label>
             <div class="image-upload-area">
+                <img id="preview" src="" alt="" style="display: none; max-width: 100%; margin-bottom: 10px;">
                 <label for="image" class="image-upload-btn">画像を選択する</label>
-                <input type="file" id="image" name="image" accept="image/*" style="display: none;">
+                <input type="file" id="image" name="image" accept="image/*" style="display: none;" onchange="previewImage(event)">
             </div>
             @error('image')
                 <p class="error">{{ $message }}</p>
@@ -107,4 +108,20 @@
         <button type="submit">出品する</button>
     </form>
 </div>
+
+<script>
+function previewImage(event) {
+    const file = event.target.files[0];
+    const preview = document.getElementById('preview');
+
+    if (file && preview) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            preview.src = e.target.result;
+            preview.style.display = 'block';
+        }
+        reader.readAsDataURL(file);
+    }
+}
+</script>
 @endsection
