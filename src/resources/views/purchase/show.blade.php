@@ -40,7 +40,7 @@
             <div class="purchase-section">
                 <div class="section-header">
                     <h3 class="section-title">配送先</h3>
-                    <a href="#" class="change-address-btn" onclick="alert('配送先変更機能は準備中です'); return false;">変更する</a>
+                    <a href="{{ route('purchase.address.edit', $item->id) }}" class="change-address-btn">変更する</a>
                 </div>
                 <div class="address-info">
                     @if($user->postal_code && $user->address)

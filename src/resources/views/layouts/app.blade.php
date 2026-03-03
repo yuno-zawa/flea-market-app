@@ -12,9 +12,9 @@
 <body>
     <header>
         <div class="header-inner">
-            <div class="logo">
+            <a href="{{ route('products.index') }}" class="logo">
                 <img src="{{ asset('images/header-logo.png') }}" alt="COACHTECHロゴ">
-            </div>
+            </a>
 
             @unless(request()->routeIs('login') || request()->routeIs('register'))
             <div class="search-box">
@@ -39,37 +39,14 @@
                 @else
                 <!-- 未ログイン -->
                     <a href="/login" class="login-btn">ログイン</a>
-                    <a href="/login" class="mypage-btn">マイページ</a>
-                    <a href="/login" class="sell-btn">出品</a>
+                    <a href="{{ route('mypage.index') }}" class="mypage-btn">マイページ</a>
+                    <a href="/sell" class="sell-btn">出品</a>
             </nav>
             @endauth
         </div>
     </header>
     @yield('content')
 
-<script>
-function previewImage(event) {
-    const file = event.target.files[0];
-    const preview = document.getElementById('preview');
-
-    if (file && preview) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            if (preview.tagName === 'DIV') {
-                const img = document.createElement('img');
-                img.id = 'preview';
-                img.alt = 'プロフィール画像';
-                img.src = e.target.result;
-                preview.parentNode.replaceChild(img, preview);
-            } else {
-                preview.src = e.target.result;
-                preview.style.display = 'block';
-            }
-        }
-        reader.readAsDataURL(file);
-    }
-}
-</script>
 
 @yield('scripts')
 </body>

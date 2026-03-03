@@ -1,0 +1,134 @@
+/* 出品画面のコンテナ */
+.sell-container {
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.sell-container h1 {
+    margin-bottom: 30px;
+    font-size: 30px;
+}
+
+.sell-container h2 {
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-size: 30px;
+    text-align: left;
+    border-bottom: 2px solid #919191;
+    padding-bottom: 10px;
+    color: #646464;
+}
+
+/* フォームグループ */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-group input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+#price::placeholder{
+    font-weight: bold;
+}
+
+/* チェックボックスグループ */
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.checkbox-label {
+    display: inline-block;
+    padding: 8px 12px;
+    border: 2px solid #ff4757;
+    color: #ff4757;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+    background-color: white;
+}
+
+.checkbox-label input[type="checkbox"]:checked + span,
+.checkbox-label:has(input:checked) {
+    background-color: #ff4757;
+    color: white;
+    border-color: #ff4757;
+}
+
+/* 出品ボタン */
+.sell-container button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #ff4757;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    font-size: 20px;
+    cursor: pointer;
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+.sell-container button[type="submit"]:hover {
+    background-color: #ee5a6f;
+}
+
+/* エラーメッセージ */
+p.error {
+    color: red;
+    font-size: 14px;
+    margin: 5px 0 0 0;
+}
+
+.image-upload-area {
+    border: 2px dotted #656565;
+    border-radius: 8px;
+    padding: 50px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.image-upload-btn {
+    display: inline-block !important;
+    padding: 12px 20px;
+    background-color: white;
+    color: #ff4757;
+    border: 2px solid #ff4757;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}

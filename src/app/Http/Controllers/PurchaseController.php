@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Item;
-use App\Models\user;
+use App\Http\Requests\AddressRequest; // ← 追加
 
 class PurchaseController extends Controller
 {
@@ -25,7 +24,36 @@ class PurchaseController extends Controller
         }
         
         $user = Auth::user();
+        $shipping = [
+        'postal_code' => session('shipping_postal_code', $user->postal_code),
+        'address' => session('shipping_address', $user->address),
+        'building' => session('shipping_building', $user->building),
+        ];
         
-        return view('purchase.show', compact('item', 'user'));
+        return view('purchase.show', compact('item', 'user', 'shipping'));
     }
+    
+    // ↓↓↓ ここから追加 ↓↓↓
+    
+    // 配送先変更画面を表示
+    public function editAddress($item_id)
+    {
+        $item = Item::findOrFail($item_id);
+        $user = Auth::user();
+        
+        return view('purchase.address', compact('item', 'user'));
+    }
+    
+    // 配送先を更新して購入画面に戻る
+public function updateAddress(AddressRequest $request, $item_id)
+{
+    // セッションに配送先情報を保存
+    session([
+        'shipping_postal_code' => $request->postal_code,
+        'shipping_address' => $request->address,
+        'shipping_building' => $request->building,
+    ]);
+    
+    return redirect()->route('purchase.show', $item_id)->with('success', '配送先を変更しました');
+}
 }

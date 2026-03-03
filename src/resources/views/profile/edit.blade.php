@@ -13,7 +13,7 @@
     <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
         @csrf
         @method('PATCH')
-
+        <input type="hidden" name="from" value="{{ str_starts_with(url()->previous(), route('mypage.index')) ? 'mypage' : 'other' }}">
         <div class="form-group image-upload">
             <div class="image-preview">
                 @if(Auth::user()->profile_image)
@@ -66,4 +66,22 @@
         <button type="submit">更新する</button>
     </form>
 </div>
+@endsection
+
+@section('scripts')
+<script>
+function previewImage(event) {
+    const file = event.target.files[0];
+    const preview = document.getElementById('preview');
+
+    if (file && preview) {
+        const reader = new FileReader();
+        reader.onload = function(e)  {
+            preview.src = e.target.result;
+            preview.style.display = 'block';
+        }
+        reader.readAsDataURL(file);
+    }
+}
+</script>
 @endsection

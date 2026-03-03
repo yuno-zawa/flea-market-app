@@ -1,7 +1,7 @@
 .profile-container {
     max-width: 700px;
-    margin: 50px auto;
-    padding: 40px;
+    margin: 20px auto;
+    padding: 20px;
 }
 
 .profile-container h1 {
@@ -45,6 +45,7 @@
 
 .upload-button:hover {
     background-color: #ee5a6f;
+    color: white;
 }
 
 /* フォームグループ */

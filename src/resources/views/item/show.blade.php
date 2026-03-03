@@ -12,7 +12,7 @@
         <!-- 左側：商品画像 -->
         <div class="item-image">
             @if($item->images->first())
-                <img src="{{ $item->images->first()->path }}" alt="{{ $item->name }}">
+                <img src="{{ asset($item->images->first()->path) }}" alt="{{ $item->name }}">
             @else
                 <img src="{{ asset('images/no-image.png') }}" alt="No Image">
             @endif
@@ -61,11 +61,7 @@
                 @if($item->isSold())
                     <p class="sold-message">売り切れ</p>
                 @else
-                    @auth
-                        <a href="{{ route('purchase.show', $item->id) }}" class="purchase-btn">購入手続きへ</a>
-                    @else
-                        <a href="/login" class="purchase-btn">購入手続きへ</a>
-                    @endauth
+                    <a href="{{ route('purchase.show', $item->id) }}" class="purchase-btn">購入手続きへ</a>
                 @endif
             </div>
 
