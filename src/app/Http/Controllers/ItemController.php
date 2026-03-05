@@ -22,6 +22,9 @@ class ItemController extends Controller
                 ->whereHas('likes', function ($query) {
                     $query->where('user_id', Auth::id());
                 })
+                ->when($request->keyword, function ($query) use ($request) {
+                $query->where('name', 'like', '%' . $request->keyword . '%');
+                })
                 ->get();
         } else {
             // おすすめタブ：全商品を取得
@@ -29,6 +32,9 @@ class ItemController extends Controller
                 ->when(Auth::check(), function ($query) {
                     // ログイン中は自分が出品した商品を除外（要件4）
                     return $query->where('user_id', '!=', Auth::id());
+                })
+                ->when($request->keyword, function ($query) use ($request) {
+                    $query->where('name', 'like', '%' . $request->keyword . '%');
                 })
                 ->get();
         }
