@@ -11,13 +11,13 @@
     <h1>住所の変更</h1>
     <form method="POST" action="{{ route('purchase.address.update', $item->id) }}">
         @csrf
-        
+
         <div class="form-group">
             <label for="postal_code">郵便番号</label>
-            <input 
-                id="postal_code" 
-                type="text" 
-                name="postal_code" 
+            <input
+                id="postal_code"
+                type="text"
+                name="postal_code"
                 value="{{ old('postal_code', session('shipping_postal_code', $user->postal_code)) }}"
                 placeholder="123-4567"
             >
@@ -28,10 +28,10 @@
 
         <div class="form-group">
             <label for="address">住所</label>
-            <input 
-                id="address" 
-                type="text" 
-                name="address" 
+            <input
+                id="address"
+                type="text"
+                name="address"
                 value="{{ old('address', session('shipping_address', $user->address)) }}"
                 placeholder="東京都渋谷区千駄ヶ谷1-2-3"
             >
@@ -42,10 +42,10 @@
 
         <div class="form-group">
             <label for="building">建物名</label>
-            <input 
-                id="building" 
-                type="text" 
-                name="building" 
+            <input
+                id="building"
+                type="text"
+                name="building"
                 value="{{ old('building', session('shipping_building', $user->building)) }}">
             @error('building')
                 <p class="error">{{ $message }}</p>

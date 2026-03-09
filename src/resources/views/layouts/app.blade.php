@@ -16,13 +16,12 @@
                 <img src="{{ asset('images/header-logo.png') }}" alt="COACHTECHロゴ">
             </a>
 
-            @unless(request()->routeIs('login') || request()->routeIs('register'))
+            @unless(request()->routeIs('login') || request()->routeIs('register') || request()->routeIs('verification.notice'))
             <div class="search-box">
                 <form action="/" method="GET">
                     <input type="text" name="keyword" placeholder="なにをお探しですか？" value="{{ request('keyword') }}">
                 </form>
             </div>
-            @endunless
 
             <nav class="header-nav">
                 @auth
@@ -41,12 +40,12 @@
                     <a href="/login" class="login-btn">ログイン</a>
                     <a href="{{ route('mypage.index') }}" class="mypage-btn">マイページ</a>
                     <a href="/sell" class="sell-btn">出品</a>
+                @endauth
             </nav>
-            @endauth
+            @endunless
         </div>
     </header>
     @yield('content')
-
 
 @yield('scripts')
 </body>
