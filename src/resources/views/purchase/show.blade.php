@@ -15,7 +15,11 @@
             <div class="purchase-item">
                 <div class="item-image">
                     @if($item->images->first())
-                        <img src="{{ $item->images->first()->path }}" alt="{{ $item->name }}">
+                            @if(Str::startsWith($item->images->first()->path, 'http'))
+                                <img src="{{ $item->images->first()->path }}" alt="{{ $item->name }}">
+                            @else
+                                <img src="{{ asset($item->images->first()->path) }}" alt="{{ $item->name }}">
+                            @endif
                     @else
                         <img src="{{ asset('images/no-image.png') }}" alt="No Image">
                     @endif
@@ -69,8 +73,12 @@
                         <td id="selected-payment">未選択</td>
                     </tr>
                 </table>
-                
-                <button type="button" class="purchase-submit-btn" onclick="alert('購入機能は準備中です')">購入する</button>
+
+                <form method="POST" action="{{ route('purchase.store', $item->id) }}">
+                    @csrf
+                    <input type="hidden" name="payment_method" id="hidden_payment_method" value="">
+                    <button type="submit" class="purchase-submit-btn">購入する</button>
+                </form>
             </div>
         </div>
     </div>
@@ -82,11 +90,14 @@
 document.addEventListener('DOMContentLoaded', function() {
     const paymentSelect = document.getElementById('payment_method');
     const selectedPayment = document.getElementById('selected-payment');
+    const hiddenPayment = document.getElementById('hidden_payment_method');
 
     paymentSelect.addEventListener('change', function() {
         const value = this.value;
         const text = this.options[this.selectedIndex].text;
-        
+
+        hiddenPayment.value = value;
+
         if (value) {
             selectedPayment.textContent = text;
         } else {

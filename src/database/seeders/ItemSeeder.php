@@ -100,7 +100,7 @@ class ItemSeeder extends Seeder
 
         foreach ($items as $itemData) {
             $item = Item::create([
-                'user_id' => 1, // 仮のユーザーID（後で調整）
+                'user_id' => \App\Models\User::first()->id,
                 'name' => $itemData['name'],
                 'description' => $itemData['description'],
                 'price' => $itemData['price'],

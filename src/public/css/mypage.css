@@ -123,8 +123,9 @@
 }
 
 .item-name {
-    font-size: 14px;
+    font-size: 20px;
     color: #333;
+    font-weight: bold;
 }
 
 .no-items {

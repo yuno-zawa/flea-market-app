@@ -18,8 +18,12 @@
             <div class="product-card">
                 <a href="{{ route('item.show', $product->id) }}">
                     <div class="product-image">
-                        @if($product->images->first())
-                            <img src="{{ $product->images->first()->path }}" alt="{{ $product->name }}">
+                        @if($item->images->first())
+                            @if(Str::startsWith($item->images->first()->path, 'http'))
+                                <img src="{{ $item->images->first()->path }}" alt="{{ $item->name }}">
+                            @else
+                                <img src="{{ asset($item->images->first()->path) }}" alt="{{ $item->name }}">
+                            @endif
                         @else
                             <img src="{{ asset('images/no-image.png') }}" alt="No Image">
                         @endif

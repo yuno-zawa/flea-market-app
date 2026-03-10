@@ -39,12 +39,13 @@
                 <a href="{{ route('item.show', $item->id) }}" class="item-card">
                     <div class="item-image">
                         @if($item->images->first())
-                            <img src="{{ $item->images->first()->path }}" alt="{{ $item->name }}">
+                                @if(Str::startsWith($item->images->first()->path, 'http'))
+                                    <img src="{{ $item->images->first()->path }}" alt="{{ $item->name }}">
+                                @else
+                                    <img src="{{ asset($item->images->first()->path) }}" alt="{{ $item->name }}">
+                                @endif
                         @else
                             <img src="{{ asset('images/no-image.png') }}" alt="No Image">
-                        @endif
-                        @if($item->isSold())
-                            <span class="sold-badge">Sold</span>
                         @endif
                     </div>
                     <p class="item-name">{{ $item->name }}</p>
