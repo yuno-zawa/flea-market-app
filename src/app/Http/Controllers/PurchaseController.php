@@ -36,12 +36,16 @@ class PurchaseController extends Controller
 
     public function purchase(Request $request, $itemId)
     {
+        $request->validate([
+            'payment_method' => 'required',
+            'shipping_id' => 'required',
+        ], [
+            'payment_method.required' => '支払い方法を選択してください',
+            'shipping_id.required' => '配送先を登録してください',
+        ]);
+
         $item = Item::findOrFail($itemId);
         $user = Auth::user();
-
-        if (!$request->payment_method) {
-            return back()->with('error', '支払い方法を選択してください');
-        }
 
         $shipping = [
             'postal_code' => session('shipping_postal_code', $user->postal_code),
@@ -49,7 +53,6 @@ class PurchaseController extends Controller
             'building' => session('shipping_building', $user->building),
         ];
 
-        // セッションに購入情報を保存（Stripe決済完了後に使用）
         session([
             'purchase_item_id' => $item->id,
             'purchase_payment_method' => $request->payment_method,
@@ -63,9 +66,7 @@ class PurchaseController extends Controller
             'line_items' => [[
                 'price_data' => [
                     'currency' => 'jpy',
-                    'product_data' => [
-                        'name' => $item->name,
-                    ],
+                    'product_data' => ['name' => $item->name],
                     'unit_amount' => $item->price,
                 ],
                 'quantity' => 1,
@@ -80,34 +81,28 @@ class PurchaseController extends Controller
 
     public function success(Request $request)
     {
+        Stripe::setApiKey(config('stripe.secret'));
+        
+        // テスト環境以外ではStripeの支払い状態を厳密にチェック
         if (!app()->environment('testing')) {
-        Stripe::setApiKey(config('stripe.secret'));
-        $session = StripeSession::retrieve($request->session_id);
-
-        if (!($session->payment_status === 'paid' || $session->status === 'complete')) {
-            return redirect()->route('products.index');
-        }
+            $session = StripeSession::retrieve($request->session_id);
+            if (!($session->payment_status === 'paid' || $session->status === 'complete')) {
+                return redirect()->route('products.index');
+            }
         }
 
-        Stripe::setApiKey(config('stripe.secret'));
+        $shipping = session('purchase_shipping');
 
-        $session = StripeSession::retrieve($request->session_id);
+        Purchase::create([
+            'user_id' => Auth::id(),
+            'item_id' => session('purchase_item_id'),
+            'payment_method' => session('purchase_payment_method'),
+            'postal_code' => $shipping['postal_code'],
+            'address' => $shipping['address'],
+            'building' => $shipping['building'],
+        ]);
 
-        if ($session->payment_status === 'paid' || $session->status === 'complete') {
-            $user = Auth::user();
-            $shipping = session('purchase_shipping');
-
-            Purchase::create([
-                'user_id' => $user->id,
-                'item_id' => session('purchase_item_id'),
-                'payment_method' => session('purchase_payment_method'),
-                'postal_code' => $shipping['postal_code'],
-                'address' => $shipping['address'],
-                'building' => $shipping['building'],
-            ]);
-
-            session()->forget(['purchase_item_id', 'purchase_payment_method', 'purchase_shipping']);
-        }
+        session()->forget(['purchase_item_id', 'purchase_payment_method', 'purchase_shipping']);
 
         return redirect()->route('products.index')->with('success', '購入が完了しました');
     }
@@ -116,7 +111,6 @@ class PurchaseController extends Controller
     {
         $item = Item::findOrFail($item_id);
         $user = Auth::user();
-
         return view('purchase.address', compact('item', 'user'));
     }
 

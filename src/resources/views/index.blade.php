@@ -28,7 +28,6 @@
                             <img src="{{ asset('images/no-image.png') }}" alt="No Image">
                         @endif
 
-                        {{-- 購入済みならSoldラベル表示（要件3） --}}
                         @if($product->isSold())
                             <span class="sold-label">Sold</span>
                         @endif

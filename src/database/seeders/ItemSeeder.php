@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Item;
 use App\Models\ItemImage;
+use App\Models\User;
 
 class ItemSeeder extends Seeder
 {
@@ -15,6 +16,8 @@ class ItemSeeder extends Seeder
      */
     public function run()
     {
+        $user = User::first() ?? User::factory()->create();
+
         $items = [
             [
                 'name' => '腕時計',
@@ -100,7 +103,7 @@ class ItemSeeder extends Seeder
 
         foreach ($items as $itemData) {
             $item = Item::create([
-                'user_id' => \App\Models\User::first()->id,
+                'user_id' => $user->id,
                 'name' => $itemData['name'],
                 'description' => $itemData['description'],
                 'price' => $itemData['price'],

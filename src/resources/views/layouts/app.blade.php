@@ -36,7 +36,7 @@
                         <button type="submit" class="sell-btn">出品</button>
                     </form>
                 @else
-                <!-- 未ログイン -->
+
                     <a href="/login" class="login-btn">ログイン</a>
                     <a href="{{ route('mypage.index') }}" class="mypage-btn">マイページ</a>
                     <a href="/sell" class="sell-btn">出品</a>

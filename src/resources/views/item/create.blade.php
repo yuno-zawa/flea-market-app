@@ -10,10 +10,9 @@
 <div class="sell-container">
     <h1>商品の出品</h1>
 
-    <form method="POST" action="{{ route('item.store') }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('item.store') }}" enctype="multipart/form-data" novalidate>
         @csrf
 
-        <!-- 商品画像 -->
         <div class="form-group">
             <label for="image">商品画像</label>
             <div class="image-upload-area">
@@ -26,18 +25,16 @@
             @enderror
         </div>
 
-        <!-- 商品の詳細（見出し） -->
         <h2>商品の詳細</h2>
 
-        <!-- カテゴリー -->
         <div class="form-group">
             <label>カテゴリー</label>
             <div class="checkbox-group">
                 @foreach($categories as $category)
                     <label class="checkbox-label">
-                        <input 
-                            type="checkbox" 
-                            name="categories[]" 
+                        <input
+                            type="checkbox"
+                            name="categories[]"
                             value="{{ $category->id }}"
                             {{ in_array($category->id, old('categories', [])) ? 'checked' : '' }}
                             style="display: none;"
@@ -51,7 +48,6 @@
             @enderror
         </div>
 
-        <!-- 商品の状態 -->
         <div class="form-group">
             <label for="condition">商品の状態</label>
             <select id="condition" name="condition">
@@ -66,10 +62,8 @@
             @enderror
         </div>
 
-        <!-- 商品名と説明（見出し） -->
         <h2>商品名と説明</h2>
 
-        <!-- 商品名 -->
         <div class="form-group">
             <label for="name">商品名</label>
             <input type="text" id="name" name="name" value="{{ old('name') }}">
@@ -78,7 +72,6 @@
             @enderror
         </div>
 
-        <!-- ブランド名 -->
         <div class="form-group">
             <label for="brand">ブランド名</label>
             <input type="text" id="brand" name="brand" value="{{ old('brand') }}" placeholder="任意">
@@ -87,7 +80,6 @@
             @enderror
         </div>
 
-        <!-- 商品の説明 -->
         <div class="form-group">
             <label for="description">商品の説明</label>
             <textarea id="description" name="description" rows="5">{{ old('description') }}</textarea>
@@ -96,7 +88,6 @@
             @enderror
         </div>
 
-        <!-- 販売価格 -->
         <div class="form-group">
             <label for="price">販売価格</label>
             <input type="number" id="price" name="price" value="{{ old('price') }}" min="0" placeholder="¥">
@@ -110,18 +101,18 @@
 </div>
 
 <script>
-function previewImage(event) {
-    const file = event.target.files[0];
-    const preview = document.getElementById('preview');
+    function previewImage(event) {
+        const file = event.target.files[0];
+        const preview = document.getElementById('preview');
 
-    if (file && preview) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            preview.src = e.target.result;
-            preview.style.display = 'block';
+            if (file && preview) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            }
+            reader.readAsDataURL(file);
         }
-        reader.readAsDataURL(file);
     }
-}
 </script>
 @endsection

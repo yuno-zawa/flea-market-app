@@ -8,7 +8,7 @@
 
 @section('content')
 <div class="mypage-container">
-    <!-- プロフィール情報 -->
+
     <div class="profile-section">
         <div class="profile-info">
             <div class="profile-image">
@@ -23,18 +23,18 @@
         <a href="{{ route('profile.edit') }}" class="profile-edit-btn">プロフィールを編集</a>
     </div>
 
-    <!-- タブ -->
+
     <div class="mypage-tabs">
-        <a href="{{ route('mypage.index', ['tab' => 'listed']) }}" 
-           class="tab {{ request('tab') != 'purchased' ? 'active' : '' }}">出品した商品</a>
-        <a href="{{ route('mypage.index', ['tab' => 'purchased']) }}" 
-           class="tab {{ request('tab') == 'purchased' ? 'active' : '' }}">購入した商品</a>
+        <a href="{{ route('mypage.index', ['tab' => 'listed']) }}"
+            class="tab {{ request('tab') != 'purchased' ? 'active' : '' }}">出品した商品</a>
+        <a href="{{ route('mypage.index', ['tab' => 'purchased']) }}"
+            class="tab {{ request('tab') == 'purchased' ? 'active' : '' }}">購入した商品</a>
     </div>
 
-    <!-- 商品一覧 -->
+
     <div class="mypage-items">
         @if(request('tab') == 'purchased')
-            <!-- 購入した商品 -->
+
             @forelse($purchasedItems as $item)
                 <a href="{{ route('item.show', $item->id) }}" class="item-card">
                     <div class="item-image">
@@ -54,7 +54,7 @@
                 <p class="no-items">購入した商品はありません</p>
             @endforelse
         @else
-            <!-- 出品した商品 -->
+
             @forelse($listedItems as $item)
                 <a href="{{ route('item.show', $item->id) }}" class="item-card">
                     <div class="item-image">

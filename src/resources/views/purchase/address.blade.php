@@ -9,9 +9,8 @@
 @section('content')
 <div class="login-container">
     <h1>住所の変更</h1>
-    <form method="POST" action="{{ route('purchase.address.update', $item->id) }}">
+    <form method="POST" action="{{ route('purchase.address.update', $item->id) }}" novalidate>
         @csrf
-
         <div class="form-group">
             <label for="postal_code">郵便番号</label>
             <input
