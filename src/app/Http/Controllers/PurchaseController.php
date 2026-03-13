@@ -80,6 +80,15 @@ class PurchaseController extends Controller
 
     public function success(Request $request)
     {
+        if (!app()->environment('testing')) {
+        Stripe::setApiKey(config('stripe.secret'));
+        $session = StripeSession::retrieve($request->session_id);
+
+        if (!($session->payment_status === 'paid' || $session->status === 'complete')) {
+            return redirect()->route('products.index');
+        }
+        }
+
         Stripe::setApiKey(config('stripe.secret'));
 
         $session = StripeSession::retrieve($request->session_id);

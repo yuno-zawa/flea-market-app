@@ -35,8 +35,8 @@
                 <h3 class="section-title">支払い方法</h3>
                 <select name="payment_method" id="payment_method" class="payment-select">
                     <option value="">選択してください</option>
-                    <option value="convenience">コンビニ支払い</option>
-                    <option value="card">カード支払い</option>
+                    <option value="convenience">コンビニ払い</option>
+                    <option value="card">カード払い</option>
                 </select>
             </div>
 
