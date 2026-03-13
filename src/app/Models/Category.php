@@ -10,8 +10,6 @@ class Category extends Model
     use HasFactory;
 
     protected $fillable = ['name'];
-
-    // カテゴリは複数の商品を持つ
     public function items()
     {
         return $this->belongsToMany(Item::class, 'item_category');

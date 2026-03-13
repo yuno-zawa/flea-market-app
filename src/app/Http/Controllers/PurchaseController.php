@@ -82,8 +82,7 @@ class PurchaseController extends Controller
     public function success(Request $request)
     {
         Stripe::setApiKey(config('stripe.secret'));
-        
-        // テスト環境以外ではStripeの支払い状態を厳密にチェック
+
         if (!app()->environment('testing')) {
             $session = StripeSession::retrieve($request->session_id);
             if (!($session->payment_status === 'paid' || $session->status === 'complete')) {
