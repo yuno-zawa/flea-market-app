@@ -1,16 +1,16 @@
 .mypage-container {
-    margin: 30px 50px;
-    padding: 40px;
+    max-width: 100%;
+    margin: 50px 0;
+    padding: 20px 20px;
 }
 
-/* プロフィール情報 */
 .profile-section {
     display: flex;
     justify-content: space-between;
     margin: auto;
     max-width: 900px;
     align-items: center;
-    margin-bottom: 50px;
+    margin-top: 30px;
 }
 
 .profile-info {
@@ -57,35 +57,26 @@
     color: white;
 }
 
-/* タブ */
 .mypage-tabs {
     display: flex;
     border-bottom: 2px solid #666;
     margin-bottom: 30px;
-    gap: 30px;
-    width: 100vw;
-    margin-left: 50%;
-    transform: translateX(-50%);
-    padding-left: calc(50px + 40px + 50px);
-    padding-right: calc(50px + 40px);
+    width: 100%;
+    padding-left: 120px;
 }
 
 .tab {
-    padding: 15px 10px;
+    padding: 15px 30px;
     text-decoration: none;
     color: #666;
     font-size: 20px;
     font-weight: bold;
-    border-bottom: 2px solid transparent;
-    margin-bottom: -2px;
-    transition: all 0.3s;
 }
 
 .tab.active {
     color: #ff4757;
 }
 
-/* 商品一覧 */
 .mypage-items {
     display: grid;
     grid-template-columns: repeat(4, 1fr);

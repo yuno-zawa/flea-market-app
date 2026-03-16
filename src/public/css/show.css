@@ -4,14 +4,12 @@
     padding: 20px;
 }
 
-/* メイン部分（画像と情報を横並び） */
 .item-main {
     display: flex;
     gap: 80px;
     align-items: flex-start;
 }
 
-/* 左側：画像 */
 .item-image {
     flex: 0 0 600px;
     top: 20px;
@@ -24,12 +22,10 @@
     border-radius: 8px;
 }
 
-/* 右側：情報全体 */
 .item-info-wrapper {
     flex: 1;
 }
 
-/* 商品情報 */
 .item-info {
     margin-bottom: 30px;
 }
@@ -55,7 +51,6 @@
     font-size: 25px;
 }
 
-/* いいね・コメント */
 .item-actions {
     display: flex;
     gap: 20px;
@@ -105,7 +100,6 @@
     gap: 8px;
 }
 
-/* 購入ボタン */
 .purchase-btn {
     display: block;
     width: 100%;
@@ -129,7 +123,6 @@
     font-weight: bold;
 }
 
-/* 商品説明 */
 .item-description {
     margin-bottom: 30px;
     border-radius: 8px;
@@ -146,7 +139,6 @@
     font-size: 20px;
 }
 
-/* 商品情報テーブル */
 .item-details {
     margin-bottom: 30px;
 }
@@ -183,7 +175,6 @@
     font-size: 18px;
 }
 
-/* コメント */
 .item-comments {
     margin-bottom: 40px;
 }
@@ -194,7 +185,6 @@
     color: #686868;
 }
 
-/* 出品者情報 */
 .seller-info {
     display: flex;
     align-items: center;
@@ -236,7 +226,6 @@
     font-size: 12px;
 }
 
-/* コメント一覧 */
 .comments-list {
     background-color: #ddd;
     border-radius: 8px;
@@ -308,7 +297,6 @@
     margin-left: 52px;
 }
 
-/* コメント投稿フォーム */
 .comment-form {
     margin-top: 20px;
 }
@@ -347,7 +335,7 @@
 
 .error {
     color: red;
-    font-size: 14px;
+    font-size: 16px;
     margin-top: 5px;
 }
 

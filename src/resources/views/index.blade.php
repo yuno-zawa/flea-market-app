@@ -7,12 +7,11 @@
 @endsection
 
 @section('content')
+<div class="tabs">
+    <a href="/{{ request('keyword') ? '?keyword=' . request('keyword') : '' }}" class="tab {{ request('tab') != 'mylist' ? 'active' : '' }}">おすすめ</a>
+    <a href="/{{ request('keyword') ? '?tab=mylist&keyword=' . request('keyword') : '?tab=mylist' }}" class="tab {{ request('tab') == 'mylist' ? 'active' : '' }}">マイリスト</a>
+</div>
 <div class="products-container">
-    <div class="tabs">
-        <a href="/" class="tab {{ request('tab') != 'mylist' ? 'active' : '' }}">おすすめ</a>
-        <a href="/?tab=mylist" class="tab {{ request('tab') == 'mylist' ? 'active' : '' }}">マイリスト</a>
-    </div>
-
     <div class="products-grid">
         @forelse($products as $product)
             <div class="product-card">

@@ -18,8 +18,9 @@
 
             @unless(request()->routeIs('login') || request()->routeIs('register') || request()->routeIs('verification.notice'))
             <div class="search-box">
-                <form action="/" method="GET">
+                <form  method="GET">
                     <input type="text" name="keyword" placeholder="なにをお探しですか？" value="{{ request('keyword') }}">
+                    <input type="hidden" name="tab" value="{{ request('tab') }}">
                 </form>
             </div>
 

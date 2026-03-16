@@ -8,7 +8,6 @@
 
 @section('content')
 <div class="mypage-container">
-
     <div class="profile-section">
         <div class="profile-info">
             <div class="profile-image">
@@ -22,18 +21,18 @@
         </div>
         <a href="{{ route('profile.edit') }}" class="profile-edit-btn">プロフィールを編集</a>
     </div>
+</div>
 
+<div class="mypage-tabs">
+    <a href="{{ route('mypage.index', ['page' => 'sell']) }}"
+        class="tab {{ request('page') != 'buy' ? 'active' : '' }}">出品した商品</a>
+    <a href="{{ route('mypage.index', ['page' => 'buy']) }}"
+        class="tab {{ request('page') == 'buy' ? 'active' : '' }}">購入した商品</a>
+</div>
 
-    <div class="mypage-tabs">
-        <a href="{{ route('mypage.index', ['tab' => 'listed']) }}"
-            class="tab {{ request('tab') != 'purchased' ? 'active' : '' }}">出品した商品</a>
-        <a href="{{ route('mypage.index', ['tab' => 'purchased']) }}"
-            class="tab {{ request('tab') == 'purchased' ? 'active' : '' }}">購入した商品</a>
-    </div>
-
-
+<div class="mypage-container">
     <div class="mypage-items">
-        @if(request('tab') == 'purchased')
+        @if(request('page') == 'buy')
 
             @forelse($purchasedItems as $item)
                 <a href="{{ route('item.show', $item->id) }}" class="item-card">

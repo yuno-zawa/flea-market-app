@@ -132,7 +132,7 @@
                 </div>
 
                 @auth
-                    <form action="{{ route('comment.store', ['item_id' => $item->id]) }}" method="POST" class="comment-form">
+                    <form action="{{ route('comment.store', ['item_id' => $item->id]) }}" method="POST" class="comment-form" novalidate>
                         @csrf
                         <label for="content">商品へのコメント</label>
                         <textarea id="content" name="content"  required maxlength="255">{{ old('content') }}</textarea>

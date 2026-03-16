@@ -48,7 +48,7 @@
                         <a href="{{ route('purchase.address.edit', $item->id) }}" class="change-address-btn">変更する</a>
                     </div>
                     <div class="address-info">
-                        @if($shipping['postal_code'] && $user->address)
+                        @if($shipping['postal_code'] && $shipping['address'])
                             <p>〒{{ $shipping['postal_code'] }}</p>
                             <p>{{ $shipping['address'] }}</p>
                             @if($shipping['building'])
@@ -58,10 +58,6 @@
                             <p class="no-address">配送先が登録されていません</p>
                         @endif
                     </div>
-                    <input type="hidden" name="shipping_id" value="{{ $shipping['id'] ?? '' }}">
-                    @error('shipping_id')
-                        <div class="error">{{ $message }}</div>
-                    @enderror
                 </div>
             </div>
 
