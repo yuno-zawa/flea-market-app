@@ -37,11 +37,9 @@ class PurchaseController extends Controller
     public function purchase(Request $request, $itemId)
     {
         $request->validate([
-            'payment_method' => 'required',
-            'shipping_id' => 'required',
+        'payment_method' => 'required|in:convenience,card',
         ], [
-            'payment_method.required' => '支払い方法を選択してください',
-            'shipping_id.required' => '配送先を登録してください',
+        'payment_method.required' => '支払い方法を選択してください',
         ]);
 
         $item = Item::findOrFail($itemId);

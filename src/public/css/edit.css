@@ -10,7 +10,6 @@
     font-size: 30px;
 }
 
-/* 画像アップロード部分 */
 .image-upload {
     display: flex;
     align-items: center;
@@ -28,7 +27,7 @@
     object-fit: cover;
     border-radius: 50%;
     border: 2px solid #ddd;
-    background-color: #e0e0e0; /* グレーの背景 */
+    background-color: #e0e0e0;
 }
 
 .upload-button {
@@ -48,7 +47,6 @@
     color: white;
 }
 
-/* フォームグループ */
 .form-group {
     margin-bottom: 20px;
 }
@@ -68,7 +66,6 @@
     box-sizing: border-box;
 }
 
-/* ボタン */
 .profile-container button[type="submit"] {
     width: 100%;
     padding: 12px;
@@ -86,7 +83,6 @@
     background-color: #ee5a6f;
 }
 
-/* エラーメッセージ */
 p.error {
     color: red;
     font-size: 14px;
