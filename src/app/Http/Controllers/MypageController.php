@@ -12,12 +12,10 @@ class MypageController extends Controller
     {
         $user = Auth::user();
 
-        // 出品した商品
         $listedItems = Item::with(['images', 'purchase'])
             ->where('user_id', $user->id)
             ->get();
 
-        // 購入した商品
         $purchasedItems = Item::with(['images', 'purchase'])
             ->whereHas('purchase', function ($query) use ($user) {
                 $query->where('user_id', $user->id);

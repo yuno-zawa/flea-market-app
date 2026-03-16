@@ -77,8 +77,8 @@ function previewImage(event) {
     if (file && preview) {
         const reader = new FileReader();
         reader.onload = function(e)  {
-            preview.src = e.target.result;
-            preview.style.display = 'block';
+        preview.src = e.target.result;
+        preview.style.display = 'block';
         }
         reader.readAsDataURL(file);
     }

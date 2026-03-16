@@ -167,3 +167,16 @@
 .purchase-submit-btn:hover {
     background-color: #ee5a6f;
 }
+
+.error {
+    color: #e74c3c;
+    font-size: 16px;
+    margin-top: 4px;
+    font-weight: bold;
+}
+
+select.error-input,
+input.error-input {
+    border: 1px solid #e74c3c;
+    background-color: #fdecea;
+}

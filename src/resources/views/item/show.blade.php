@@ -9,28 +9,31 @@
 @section('content')
 <div class="item-container">
     <div class="item-main">
-        <!-- 左側：商品画像 -->
+
         <div class="item-image">
             @if($item->images->first())
-                <img src="{{ asset($item->images->first()->path) }}" alt="{{ $item->name }}">
+                @if(Str::startsWith($item->images->first()->path, 'http'))
+                    <img src="{{ $item->images->first()->path }}" alt="{{ $item->name }}">
+                @else
+                    <img src="{{ asset($item->images->first()->path) }}" alt="{{ $item->name }}">
+                @endif
             @else
                 <img src="{{ asset('images/no-image.png') }}" alt="No Image">
             @endif
         </div>
 
-        <!-- 右側：全ての情報 -->
+
         <div class="item-info-wrapper">
-            <!-- 商品情報 -->
+
             <div class="item-info">
                 <h1 class="item-name">{{ $item->name }}</h1>
-                
+
                 @if($item->brand)
                     <p class="item-brand">{{ $item->brand }}</p>
                 @endif
-                
+
                 <p class="item-price">¥{{ number_format($item->price) }} <span class="tax-included">(税込)</span></p>
-                
-                <!-- いいね・コメント -->
+
                 <div class="item-actions">
                     @auth
                         <form action="{{ route('like.toggle', $item->id) }}" method="POST" class="like-form">
@@ -50,14 +53,13 @@
                             <span class="like-count">{{ $item->likesCount() }}</span>
                         </a>
                     @endauth
-                    
+
                     <span class="comment-count">
                         <img src="{{ asset('images/speech-bubble.png') }}" alt="コメント" class="comment-icon">
                         {{ $item->comments->count() }}
                     </span>
                 </div>
-                
-                <!-- 購入ボタン -->
+
                 @if($item->isSold())
                     <p class="sold-message">売り切れ</p>
                 @else
@@ -65,13 +67,11 @@
                 @endif
             </div>
 
-            <!-- 商品説明 -->
             <div class="item-description">
                 <h2>商品説明</h2>
                 <p>{{ $item->description }}</p>
             </div>
 
-            <!-- 商品情報 -->
             <div class="item-details">
                 <h2>商品の情報</h2>
                 <table>
@@ -92,11 +92,9 @@
                 </table>
             </div>
 
-            <!-- コメント -->
             <div class="item-comments">
                 <h2>コメント（{{ $item->comments->count() }}）</h2>
-                
-                <!-- 出品者情報 -->
+
                 <div class="seller-info">
                     <div class="seller-avatar">
                         @if($item->user->profile_image)
@@ -110,7 +108,6 @@
                     </div>
                 </div>
 
-                <!-- コメント一覧 -->
                 <div class="comments-list">
                     @forelse($item->comments as $comment)
                         <div class="comment">
@@ -134,7 +131,6 @@
                     @endforelse
                 </div>
 
-                <!-- コメント投稿フォーム -->
                 @auth
                     <form action="{{ route('comment.store', ['item_id' => $item->id]) }}" method="POST" class="comment-form">
                         @csrf

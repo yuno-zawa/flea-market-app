@@ -17,18 +17,22 @@ class ItemController extends Controller
                 session()->put('url.intended', $request->fullUrl());
                 return redirect()->route('login');
             }
-            // マイリスト
+
             $products = Item::with(['images', 'purchase'])
                 ->whereHas('likes', function ($query) {
                     $query->where('user_id', Auth::id());
                 })
+                ->when($request->keyword, function ($query) use ($request) {
+                $query->where('name', 'like', '%' . $request->keyword . '%');
+                })
                 ->get();
         } else {
-            // おすすめタブ：全商品を取得
             $products = Item::with(['images', 'purchase'])
                 ->when(Auth::check(), function ($query) {
-                    // ログイン中は自分が出品した商品を除外（要件4）
                     return $query->where('user_id', '!=', Auth::id());
+                })
+                ->when($request->keyword, function ($query) use ($request) {
+                    $query->where('name', 'like', '%' . $request->keyword . '%');
                 })
                 ->get();
         }
@@ -49,10 +53,8 @@ class ItemController extends Controller
         return view('item.create', compact('categories'));
     }
 
-    // 商品を出品
     public function store(ExhibitionRequest $request)
     {
-        // 商品情報を保存
         $item = new Item();
         $item->user_id = Auth::id();
         $item->name = $request->name;
@@ -62,13 +64,11 @@ class ItemController extends Controller
         $item->condition = $request->condition;
         $item->save();
 
-        // 商品画像を保存
         if ($request->hasFile('image')) {
             $path = $request->file('image')->store('item_images', 'public');
             $item->images()->create(['path' => 'storage/' . $path]);
         }
 
-        // カテゴリーを紐付け
         $item->categories()->attach($request->categories);
 
         return redirect()->route('products.index')->with('success', '商品を出品しました');
