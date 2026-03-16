@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use \App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,14 +14,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::create([
+        User::firstOrCreate([
             'name' => '一般ユーザー',
             'email' => 'user@example.com',
             'password' => \Illuminate\Support\Facades\Hash::make('password'),
             'email_verified_at' => now(),
         ]);
 
-        \App\Models\User::create([
+        User::firstOrCreate([
             'name' => '管理者ユーザー',
             'email' => 'admin@example.com',
             'password' => \Illuminate\Support\Facades\Hash::make('password'),
