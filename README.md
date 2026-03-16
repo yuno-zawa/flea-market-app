@@ -27,9 +27,8 @@ php artisan storage:link
 1. Stripeの公式サイト https://dashboard.stripe.com/register にアクセス
 2. メールアドレス、名前、パスワードを入力してサンドボックス（テストモード）登録
 3. 登録後、ダッシュボードの左メニューから「開発者」→「APIキー」
-4. テストモードになっていることを確認（右上にトグルがあります）
-5.「公開可能キー」（pk_test_...）と「シークレットキー」（sk_test_...）をコピー
-6. `.env` ファイルに以下の通り設定してください：
+4. テストモードになっていることを確認（右上にトグルがあります）5.「公開可能キー」（pk*test*...）と「シークレットキー」（sk*test*...）をコピー
+5. `.env` ファイルに以下の通り設定してください：
 
 - STRIPE_KEY=（ここに公開可能キーをペースト）
 - STRIPE_SECRET=（ここにシークレットキーをペースト）
@@ -56,7 +55,7 @@ php artisan storage:link
 - メールアドレス: admin@example.com
 - パスワード: password
 
-### 使用技術(実行環境)
+## 使用技術(実行環境)
 
 - PHP 8.1.34
 - Laravel 8.83.29
@@ -66,17 +65,17 @@ php artisan storage:link
 - Stripe API (決済機能用)
 - MailHog (メール送信テスト)
 
-### ER図
+## ER図
 
 ![ER Diagram](erd.drawio.png)
 
-### 開発環境URL
+## 開発環境URL
 
 - 開発環境: http://localhost
 - phpMyAdmin: http://localhost:8080
 - MailHog: http://localhost:8025
 
-### 主な機能
+## 主な機能
 
 - ユーザー登録 / ログイン
 - メール認証(MailHog使用)
